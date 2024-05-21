@@ -101,8 +101,8 @@ export default function Formelrad() {
                         setValues(values => ({...values, p: e.target.value}))
                     }}/>
                     <button type="submit">Calculate</button>
-                    <p>{values.message}</p>
                     <button style={{margin: 10}} onClick={handleClear}>Clear</button>
+                    <p style={{color: colors.message}}>{values.message}</p>
                 </form>
             </section>
         </>
