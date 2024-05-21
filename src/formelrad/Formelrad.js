@@ -27,7 +27,8 @@ export default function Formelrad() {
     const handleClear = (event) => {
         event.preventDefault();
         console.log("handleClear");
-        setValues(values => ({...values, u: "", i: "", r: "", p: "", message: ""}))
+        setValues(values => ({...values, u: "", i: "", r: "", p: "", message: ""}));
+        resetColors();
     }
 
     const handleSubmit = (event) => {
