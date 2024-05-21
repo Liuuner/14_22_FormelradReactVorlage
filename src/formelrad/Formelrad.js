@@ -12,6 +12,12 @@ export default function Formelrad() {
         message: ""
     })
 
+    const handleClear = (event) => {
+        event.preventDefault();
+        console.log("handleClear");
+        setValues(values => ({...values, u: "", i: "", r: "", p: "", message: ""}))
+    }
+
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log("handleSubmit")
@@ -23,7 +29,7 @@ export default function Formelrad() {
         if (values.p === "") count++;
         if (count !== 2) {
             setValues(values => ({...values, message: "2 Felder leer lassen, 2 Felder ausfüllen"}));
-        }else {
+        } else {
             setValues(values => ({...values, message: ""}));
 
             if (values.u === "" && values.i === "") {
@@ -62,12 +68,21 @@ export default function Formelrad() {
                     <img src={formelrad} width="200" alt="Formelrad"/>
                 </header>
                 <form onSubmit={handleSubmit}>
-                    <InputField color={"black"} value={values.u} label="Spannung" handleChange={e => {setValues(values => ({...values, u: e.target.value}))}} />
-                    <InputField color={"black"} value={values.i} label="Stromstärke" handleChange={e => {setValues(values => ({...values, i: e.target.value}))}} />
-                    <InputField color={"black"} value={values.r} label="Widerstand" handleChange={e => {setValues(values => ({...values, r: e.target.value}))}} />
-                    <InputField color={"black"} value={values.p} label="Leistung" handleChange={e => {setValues(values => ({...values, p: e.target.value}))}} />
+                    <InputField color={"black"} value={values.u} label="Spannung" handleChange={e => {
+                        setValues(values => ({...values, u: e.target.value}))
+                    }}/>
+                    <InputField color={"black"} value={values.i} label="Stromstärke" handleChange={e => {
+                        setValues(values => ({...values, i: e.target.value}))
+                    }}/>
+                    <InputField color={"black"} value={values.r} label="Widerstand" handleChange={e => {
+                        setValues(values => ({...values, r: e.target.value}))
+                    }}/>
+                    <InputField color={"black"} value={values.p} label="Leistung" handleChange={e => {
+                        setValues(values => ({...values, p: e.target.value}))
+                    }}/>
                     <button type="submit">Calculate</button>
                     <p>{values.message}</p>
+                    <button style={{margin: 10}} onClick={handleClear}>Clear</button>
                 </form>
             </section>
         </>
